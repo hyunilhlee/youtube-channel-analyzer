@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Box, Typography, CircularProgress } from '@mui/material';
 
 interface AnalysisLoadingProps {
@@ -9,7 +9,7 @@ const AnalysisLoading: React.FC<AnalysisLoadingProps> = ({ onComplete }) => {
   const [currentText, setCurrentText] = useState('');
   const [progress, setProgress] = useState(0);
 
-  const loadingTexts = [
+  const loadingTexts = useMemo(() => [
     "채널의 정보를 불러오는 중...",
     "최근 영상을 분석하는 중...",
     "구독자와 조회수의 상관관계를 확인하는 중...",
@@ -21,7 +21,7 @@ const AnalysisLoading: React.FC<AnalysisLoadingProps> = ({ onComplete }) => {
     "시청자 참여도를 측정하는 중...",
     "AI를 이용한 심층 분석 중...",
     "최종 분석 결과를 정리하는 중..."
-  ];
+  ], []);
 
   useEffect(() => {
     // 3초에서 10초 사이의 랜덤한 시간 생성 (밀리초 단위)

@@ -51,25 +51,6 @@ interface ChannelData {
   videoStats: VideoStats[];
 }
 
-interface AnalysisCase {
-  case_id: string;
-  metrics: string[];
-  interpretation: string;
-  causes: {
-    title: string;
-    content: string[];
-  }[];
-  detailed_analysis: {
-    title: string;
-    content: string[];
-  }[];
-  recommendations: {
-    title: string;
-    content: string[];
-  }[];
-  conclusion: string[];
-}
-
 const ChannelAnalysis: React.FC = () => {
   const [channelData, setChannelData] = useState<ChannelData | null>(null);
   const [loading, setLoading] = useState(true);

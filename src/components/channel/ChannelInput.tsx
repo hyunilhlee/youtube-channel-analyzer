@@ -77,42 +77,6 @@ const ChannelInput: React.FC<ChannelInputProps> = ({ onAnalyze }) => {
     };
   };
 
-  const extractChannelId = (url: string): string | null => {
-    try {
-      // URL 정규화
-      const normalizedUrl = url.trim().toLowerCase();
-      
-      // @유저명 형식 확인
-      const atUsernameMatch = normalizedUrl.match(/youtube\.com\/@([^\/\?]+)/i);
-      if (atUsernameMatch) {
-        return `@${atUsernameMatch[1]}`;
-      }
-
-      // channel/ID 형식 확인
-      const channelMatch = normalizedUrl.match(/youtube\.com\/channel\/([^\/\?]+)/i);
-      if (channelMatch) {
-        return channelMatch[1];
-      }
-
-      // c/유저명 형식 확인
-      const cUsernameMatch = normalizedUrl.match(/youtube\.com\/c\/([^\/\?]+)/i);
-      if (cUsernameMatch) {
-        return cUsernameMatch[1];
-      }
-
-      // user/유저명 형식 확인
-      const userMatch = normalizedUrl.match(/youtube\.com\/user\/([^\/\?]+)/i);
-      if (userMatch) {
-        return userMatch[1];
-      }
-
-      return null;
-    } catch (error) {
-      console.error('URL 파싱 에러:', error);
-      return null;
-    }
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
@@ -120,7 +84,7 @@ const ChannelInput: React.FC<ChannelInputProps> = ({ onAnalyze }) => {
     setChannelInfo(null);
 
     // URL 패턴 검증 (@username 형식도 허용)
-    const urlPattern = /^(https?:\/\/)?(www\.)?(youtube\.com\/@[^/?]+)(\/.*)?$/;
+    const urlPattern = /^(https?:\/\/)?(www\.)?youtube\.com\/@[^/?]+/;
     const videoPattern = /^(https?:\/\/)?(www\.)?youtube\.com\/watch\?v=[^&]+/;
     
     if (!urlPattern.test(url) && !videoPattern.test(url)) {
