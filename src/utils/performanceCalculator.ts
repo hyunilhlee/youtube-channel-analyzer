@@ -14,7 +14,7 @@ const parseKoreanDate = (dateStr: string): Date => {
       throw new Error('날짜 형식이 맞지 않음');
     }
     
-    const [_, year, month, day] = matches;
+    const [, year, month, day] = matches;
     // UTC 기준으로 날짜 생성 (시간은 00:00:00으로 설정)
     return new Date(Date.UTC(
       parseInt(year),
@@ -218,7 +218,7 @@ export const calculatePerformanceMetrics = (
   const commentMaxThreshold = commentMultiplier.max;
 
   console.log('\n댓글 성과 기준:');
-  console.log('최소 기준:', (commentMinThreshold * 100).toFixed(2), '%');
+  console.log('최소 ���준:', (commentMinThreshold * 100).toFixed(2), '%');
   console.log('최대 기준:', (commentMaxThreshold * 100).toFixed(2), '%');
   console.log('실제 평균:', (averageCommentRatio * 100).toFixed(2), '%');
 

@@ -120,7 +120,7 @@ const ChannelInput: React.FC<ChannelInputProps> = ({ onAnalyze }) => {
     setChannelInfo(null);
 
     // URL 패턴 검증 (@username 형식도 허용)
-    const urlPattern = /^(https?:\/\/)?(www\.)?(youtube\.com\/)?(@[^/?]+)(\/.*)?$/;
+    const urlPattern = /^(https?:\/\/)?(www\.)?(youtube\.com\/@[^/?]+)(\/.*)?$/;
     const videoPattern = /^(https?:\/\/)?(www\.)?youtube\.com\/watch\?v=[^&]+/;
     
     if (!urlPattern.test(url) && !videoPattern.test(url)) {

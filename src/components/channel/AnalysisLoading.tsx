@@ -56,7 +56,7 @@ const AnalysisLoading: React.FC<AnalysisLoadingProps> = ({ onComplete }) => {
       clearInterval(textInterval);
       clearInterval(progressInterval);
     };
-  }, [onComplete]);
+  }, [onComplete, loadingTexts]);
 
   return (
     <Box
